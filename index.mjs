@@ -10,6 +10,7 @@ const { pathname: currentFile } = new URL(import.meta.url)
 const cwd = dirname(currentFile)
 
 const epubFilePath = `${cwd}/dataset/novo_cantico.epub`
+const outputFilePath = `${cwd}/hymns.txt`
 
 const epub = new EPub(epubFilePath)
 
@@ -78,5 +79,5 @@ await pipelineAsync(
   getHTMLFromChapters,
   formatHTML,
   setContent,
-  createWriteStream('hymns.txt')
+  createWriteStream(outputFilePath)
 )
